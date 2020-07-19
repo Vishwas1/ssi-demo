@@ -14,15 +14,15 @@ Sample implementation of SSI protocol with [W3C specification](https://www.w3.or
 
 ## Onboarding Flow
 
-[issuer](ssi-infa/README.md)
+[Onboarding](ssi-infa/README.md)
 
 ## Issuance Flow
 
-[issuer](issuer/README.md)
+[Issuance](issuer/README.md)
 
 ## Verification Flow
 
-[verifier](issuer/README.md)
+[Verification](issuer/README.md)
 
 ## Reference
 

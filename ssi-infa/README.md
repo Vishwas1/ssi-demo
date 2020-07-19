@@ -1,6 +1,6 @@
 // middleware
 
-![img](docs/DID-registrationflow.png)
+![img](../docs/DID-registrationflow.png)
 
 
 Notes: 
