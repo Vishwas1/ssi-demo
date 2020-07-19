@@ -12,6 +12,9 @@ Sample implementation of SSI protocol with [W3C specification](https://www.w3.or
 
 ![img](docs/architecture.png)
 
+- SSI Middleware: Manages the required list of APIs.
+- SSI Registry: Stores the DID, DID-Doc, Schemea etc.
+
 ## Onboarding Flow
 
 [Onboarding](ssi-infa/README.md)
