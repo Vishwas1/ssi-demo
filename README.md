@@ -1,8 +1,6 @@
-## Index
+## SSI-Demo
 
-1. Onboarding 
-2. Issuance
-3. Verification
+Sample implementation of SSI protocol with [W3C specification](https://www.w3.org/TR/did-core/)
 
 ## Components
 
