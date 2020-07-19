@@ -1,0 +1,26 @@
+{
+  "name": "ssi-infa",
+  "version": "1.0.0",
+  "description": "Middleware to create did (i.e onboarding) and manages registry",
+  "main": "dist/app",
+  "typings": "dist/app",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc -p ."
+  },
+  "author": "Vishwas Anand Bhushan",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "simple-node-logger": "^18.12.24"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.23",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typerscript": "^0.2.3"
+  }
+}
