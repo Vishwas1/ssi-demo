@@ -1,4 +1,4 @@
-## 
+## DID-Core
 
 This module has core implementation of SSI - The Decentralized Identitfier (DID) infrastructue. It follows the [W3C DID v1.0 specification](https://w3c.github.io/did-core/). The module mainly implements DID and DID doc. Basically, DID infrastructure can be thought of as a global key-value database in which the database is all DID-compatible blockchains, distributed ledgers, or decentralized networks. In this virtual database, the key is a DID, and the value is a DID document.
 
@@ -43,6 +43,14 @@ The DID resolves to [DID document](https://w3c.github.io/did-core/#dfn-did-docum
 }
 
 ```
+
+## Architecutre
+
+This module intracts with [VDR component](./src/cdr/README.md) to store the data.  The overall architecutre is as follows.
+
+
+![img](../docs/did-infr.png)
+
 
 
 ## DID creation flow

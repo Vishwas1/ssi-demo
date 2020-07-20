@@ -8,7 +8,7 @@ Sample implementation of SSI protocol with [W3C specification](https://www.w3.or
 2. **Issuers**: One who issue verifiable credentials.
 3. **Verifier**: One who verifies verifiable credentials.
 
-## Overall Architecture
+## Highlevel Architecture
 
 ![img](docs/architecture.png)
 
