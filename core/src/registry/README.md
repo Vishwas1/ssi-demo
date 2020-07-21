@@ -4,3 +4,9 @@ This component is acts as a storage for DIDs, DID docs, schema etc. Currently it
 
 Note: This component should ideally be taken out and implemented as seperated module itself. 
 
+
+
+### Registires
+
+- [DID Method registries](https://w3c.github.io/did-spec-registries/)
+- 

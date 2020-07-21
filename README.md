@@ -4,7 +4,7 @@ Sample implementation of SSI protocol with [W3C specification](https://www.w3.or
 
 ## Components
 
-1. **SSI-Infra**: Middleware to create did (i.e onboarding) and manages registry
+1. **Core**: Middleware to create did (i.e onboarding) and manages registry
 2. **Issuers**: One who issue verifiable credentials.
 3. **Verifier**: One who verifies verifiable credentials.
 
@@ -35,3 +35,6 @@ Sample implementation of SSI protocol with [W3C specification](https://www.w3.or
 - [Decentralized Identifier Specification v1.0](https://github.com/w3c/did-core)
 - [Decentralized Identifier Core Registries v1.0](https://github.com/w3c/did-spec-registries)
 - [Decentralized Identifier Use Cases v1.0](https://github.com/w3c/did-use-cases)
+- https://livebook.manning.com/book/self-sovereign-identity/chapter-7/v-5/31
+- https://www.w3.org/TR/vc-data-model/#lifecycle-details
+- [Cryptographic Accumulator](https://medium.com/@aurelcode/cryptographic-accumulators-da3aa4561d77)
