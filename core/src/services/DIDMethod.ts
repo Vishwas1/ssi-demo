@@ -1,12 +1,3 @@
-// https://w3c-ccg.github.io/did-method-registry
-// when you have your own did, you need to register here with them to be recognised
-
-/**
- * A definition of how a specific DID scheme must be implemented to work with a specific verifiable data registry. A DID method is defined by a DID method specification, which must specify the precise operations by which DIDs are created, resolved and deactivated and DID documents are written and updated
- * 
- */
-
-// Each DID method is required to have its own technical specification, which must define the following aspects of the DID method:
 import DID from './DID';
 export default class DIDMethod {
      methodName: string; // hypersign
@@ -16,6 +7,9 @@ export default class DIDMethod {
          this.methodSpecificIdentiferSyntax = idSyntax;
      }
 
+     /////// Method Operations: https://w3c.github.io/did-core/#method-operations
+
+     // https://w3c.github.io/did-core/#create
      createDid(){
          //TODO:
          // Create DID
@@ -24,6 +18,8 @@ export default class DIDMethod {
          // Store the DID and DIDDoc into Registry
      }
 
+     
+     // Ref: https://w3c.github.io/did-core/#update
      updateDid(DID :DID){
          //TODO:
          // Fetch the DIDDoc of this DID
@@ -31,6 +27,7 @@ export default class DIDMethod {
          // Store the content into REgistry
      }
 
+     // Ref: https://w3c.github.io/did-core/#deactivate
      revokeDid(DID :DID){
          //TODO:
          // Same as update
