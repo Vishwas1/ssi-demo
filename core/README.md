@@ -118,7 +118,12 @@ A DID URL dereferencer is a software and/or hardware component that takes a DID 
 
 - https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-5/43
 - https://github.com/WebOfTrustInfo/rwot6-santabarbara/blob/master/final-documents/did-auth.md#did-record-creation 
+- https://w3c-ccg.github.io/security-vocab/
 
+Important links:
+
+- https://w3c.github.io/did-spec-registries/#properties
+- https://www.w3.org/TR/did-core/#introduction
 
 
 
