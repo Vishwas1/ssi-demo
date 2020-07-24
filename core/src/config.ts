@@ -1,14 +1,22 @@
 import env from 'dotenv'
 import sqlite from 'sqlite3';
 import path from 'path';
+import fs from 'fs'
 const log = require('simple-node-logger');
 
 
 env.config();
 
+const log_dir = path.resolve(__dirname,'../log')
+const db_dir = path.resolve(__dirname,'../db')
+
+if(!fs.existsSync(log_dir)) fs.mkdirSync(log_dir)
+if(!fs.existsSync(db_dir)) fs.mkdirSync(db_dir)
+
 // LOGGING
+const log_path = path.resolve(__dirname, process.env.LOG_FILEPATH || 'ssi-infra.log')
 const logger = log.createSimpleLogger({
-    logFilePath: process.env.LOG_FILEPATH || 'ssi-infra.log',
+    logFilePath: log_path,
     timestampFormat: process.env.LOG_TIMESTAMP_FORMAT || 'YYYY-MM-DD HH:mm:ss.SSS'
 })
 logger.setLevel(process.env.LOG_LEVEL || 'info')
@@ -28,8 +36,15 @@ const db =  new sqlite.Database(db_path, (err) => {
     }
 });
 
+// DID Related
+const did = {
+    prefix : process.env.DID_PREFIX || 'did',
+    method : process.env.DID_METHOD_NAME || 'hypersign',
+}
+
 export  {
     port,
     logger,
-    db
+    db,
+    did
 }

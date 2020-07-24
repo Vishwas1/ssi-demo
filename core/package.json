@@ -18,6 +18,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "simple-node-logger": "^18.12.24",
+    "sqlite3": "^5.0.0",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
