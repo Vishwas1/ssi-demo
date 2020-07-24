@@ -1,13 +1,13 @@
 import IDID from './IDID'
-import DIDMethod from './DIDMethod';
 import { v4 as uuid4 } from 'uuid';
+import { did } from '../config';
 
 export default class DID implements IDID{
-    method: DIDMethod;
+    method: string;
     prefix: string;
-    constructor(didM: DIDMethod){
+    constructor(didM: string){
         this.method = didM;
-        this.prefix = "did";
+        this.prefix = did.prefix;
     }
 
     private getUniqueIdentifier(){
@@ -16,7 +16,7 @@ export default class DID implements IDID{
     }
 
     did(): string{
-        return `${this.prefix}:${this.method.methodName}:${this.getUniqueIdentifier()}`;
+        return `${this.prefix}:${this.method}:${this.getUniqueIdentifier()}`;
     }
 }
 

@@ -29,9 +29,8 @@ did:<method-name>:metod-specific-id>
 
 E.g: did:example:123456789abcdefghi
 */
-import DIDMethod from './DIDMethod';
 export default interface IDID{
-    method: DIDMethod;
+    method: string;
     prefix: string;
     did(): string;
 }
