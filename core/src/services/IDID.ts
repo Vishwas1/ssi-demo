@@ -31,6 +31,6 @@ E.g: did:example:123456789abcdefghi
 */
 export default interface IDID{
     method: string;
-    prefix: string;
+    scheme: string;
     did(): string;
 }

@@ -4,10 +4,10 @@ import { did } from '../config';
 
 export default class DID implements IDID{
     method: string;
-    prefix: string;
+    scheme: string;
     constructor(didM: string){
         this.method = didM;
-        this.prefix = did.prefix;
+        this.scheme = did.sheme;
     }
 
     private getUniqueIdentifier(){
@@ -16,7 +16,7 @@ export default class DID implements IDID{
     }
 
     did(): string{
-        return `${this.prefix}:${this.method}:${this.getUniqueIdentifier()}`;
+        return `${this.scheme}:${this.method}:${this.getUniqueIdentifier()}`;
     }
 }
 

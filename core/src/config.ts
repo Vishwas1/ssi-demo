@@ -38,7 +38,7 @@ const db =  new sqlite.Database(db_path, (err) => {
 
 // DID Related
 const did = {
-    prefix : process.env.DID_PREFIX || 'did',
+    sheme : process.env.DID_SCHEME || 'did',
     method : process.env.DID_METHOD_NAME || 'hypersign',
 }
 
