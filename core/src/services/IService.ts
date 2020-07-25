@@ -6,20 +6,20 @@
 {
   ...
   "service": [{
-    "id": "did:example:123#edv",
-    "type": "EncryptedDataVault",
-    "serviceEndpoint": "https://edv.example.com/"
+    "id": "did:example:123456789abcdefghi#openid",
+    "type": "OpenIdConnectVersion1.0Service",
+    "serviceEndpoint": "https://openid.example.com/"
   }]
 }
  */
 // REf: https://www.w3.org/TR/did-core/#service-endpoints
 
-enum VerifiableCredentialServiceTypes{
+export enum VerifiableCredentialServiceTypes{
     "VerifiableCredentialService"
   }
 
   
-export default interface IService{
+export interface IService{
     id: string;
     type: VerifiableCredentialServiceTypes;
     servicEndpoint: string;
