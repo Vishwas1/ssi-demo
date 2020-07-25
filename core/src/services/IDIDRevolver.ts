@@ -33,6 +33,7 @@ import IDIDDoc from './IDIDDoc';
 
 //Ref: https://www.w3.org/TR/did-core/#resolution/
 //Ref: https://github.com/hyperledger/aries-rfcs/tree/master/features/0124-did-resolution-protocol
+// https://github.com/decentralized-identity/web-did-resolver#resolving-a-did-document
 export default interface IDIDResolver{
     // resolve ( did, did-resolution-input-metadata )
     // ->( did-resolution-metadata, did-document, did-document-metadata )

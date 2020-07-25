@@ -1,40 +1,34 @@
 import IDIDDoc from './IDIDDoc';
-import IDID from './DID';
-import VerificationRelationShips  from './VerificationRelationShips';
+import Secp256k1SignatureAuthentication2018  from './VerificationRelationShips';
 import Service from './Service';
 import Proof  from './Proof';
-import PublicKeyVerificationMethod from './VerificationMethods';
+import { JwsVerificatioMethod, Ed25519VerificationMethod, Secp256k1VerificationMethod } from './VerificationMethods';
 
 export default class DIDDoc implements IDIDDoc{
-  context: string;
-  id: IDID;
-  controller: IDID; 
+  context:string
+  id: string;
+  controller: string; 
 
-  verficationRelationShip: VerificationRelationShips;
-  publicKey: Array<PublicKeyVerificationMethod>;
+  authentication: Array<Secp256k1SignatureAuthentication2018> = [];
+  publicKey: Array<JwsVerificatioMethod | Ed25519VerificationMethod | Secp256k1VerificationMethod> = [];
   
   services: Array<Service>;
   proof: Proof;
 
-  timestamp: number;
-  created: string;
-  updated: string;
-  constructor(id: IDID, controller: IDID, authentication: VerificationRelationShips ){
-    this.context = ""
+  created: number;
+  updated: number;
+  constructor(id: string, controller: string){
+    this.context = 'https://w3id.org/did/v1'
     this.controller = controller;
     this.id = id;
-    this.verficationRelationShip = authentication;
-    this.publicKey = [];
-    this.services = [];
+    const relation = new Secp256k1SignatureAuthentication2018(`${id}#keys1`)
+    this.authentication.push({...relation});
+    const method = new Secp256k1VerificationMethod(`${id}#keys1`)
+    this.publicKey.push({...method})
+    const service =  new Service(`${id}#vcs`, "https://example.com/vc/")
+    this.services = [{...service}];
     this.proof = "";
-    this.timestamp = 0;
-    this.created = "";
-    this.updated = "";
-  }
-
-  toString(DIDDocInstance: IDIDDoc) {
-    // should be in the form of JSON-LD encoding
-    // https://json-ld.org/
-    return JSON.stringify(DIDDocInstance);
+    this.created = Date.now();
+    this.updated = Date.now();
   }
 }

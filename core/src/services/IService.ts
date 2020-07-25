@@ -21,7 +21,7 @@ export enum VerifiableCredentialServiceTypes{
   
 export interface IService{
     id: string;
-    type: VerifiableCredentialServiceTypes;
+    type: string;
     servicEndpoint: string;
 }
 

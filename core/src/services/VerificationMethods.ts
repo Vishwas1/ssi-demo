@@ -78,9 +78,9 @@ export class Ed25519VerificationMethod extends Ed25519VerificationKey2018 implem
 export class Secp256k1VerificationMethod extends Secp256k1VerificationKey2018 implements IVerificationMethodType{
   id: string; //URI
   controller: string;
-  constructor(){
-    super("");
-    this.id = "";
+  constructor(key:string){
+    super(key);
+    this.id = key;
     this.controller = "";
   }
 

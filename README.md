@@ -1,6 +1,6 @@
 ## SSI-Demo
 
-Sample implementation of SSI protocol with [W3C specification](https://www.w3.org/TR/did-core/)
+Sample implementation of proposed  [DID](https://www.w3.org/TR/did-core/) by the [W3C Credential Community Group](https://w3c-ccg.github.io/)
 
 ## Components
 

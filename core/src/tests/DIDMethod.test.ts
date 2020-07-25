@@ -13,10 +13,11 @@ describe('DID Method', () => {
         expect(didMInstance.methodName).to.equal(didConfig.method);
     })
 
-    it('should create did', ()=>{
-        const did = didMInstance.op_create();
+    it('should create did and didDoc', ()=>{
+        const { did, didDoc } = didMInstance.op_create();
         console.log(did)
-        expect(did).to.includes(didConfig.prefix)
+        console.log(didDoc)
+        expect(did).to.includes(didConfig.sheme)
     })
 
     it('should create did as per did syntax', ()=>{

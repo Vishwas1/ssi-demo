@@ -1,4 +1,5 @@
 import DID from './DID';
+import DIDDoc from './DIDDoc';
 import IDIDMethod from './IDIDMethod';
 import * as config from '../config';
 const didConfig = config.did
@@ -19,10 +20,10 @@ export default class DIDMethod implements IDIDMethod {
         const didInstance =  new DID(this.methodName);
         const did = didInstance.did();
         // Create DIDDoc
-        
+        const didDoc = new DIDDoc(did, did);
         // Associate DID with DIDDoc
         // Store the DID and DIDDoc into Registry
-        return did;
+        return {did, didDoc};
     }
 
     op_read(DID: string){} 
@@ -42,3 +43,5 @@ export default class DIDMethod implements IDIDMethod {
         // Same as update
     }
 }
+
+

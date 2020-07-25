@@ -23,26 +23,38 @@
 }
  */
 
-enum VerificationRelationShipNames{
-    "authentication",
-    "assertionMethod",
-    "keyAgreement",
-    "capabilityInvocation"
-}
+// enum VerificationRelationShipNames{
+//     "authentication",
+//     "assertionMethod",
+//     "keyAgreement",
+//     "capabilityInvocation"
+// }
 
 enum VerificationReationShipTypes{
   "Secp256k1SignatureAuthentication2018",
   ""
 }
 
-export default class VerificationRelationShips{
-  name: VerificationRelationShipNames;
-  type: VerificationReationShipTypes
-  constructor(name :VerificationRelationShipNames, type :VerificationReationShipTypes){
-    this.name = name;
-    this.type = type;
+export default class Secp256k1SignatureAuthentication2018{
+  type: string;
+  publicKey: string;
+  constructor(pk:string){
+    this.type = VerificationReationShipTypes[0];
+    this.publicKey = pk;
   }
 }
+
+
+// export default class VerificationRelationShips{
+//   name: VerificationRelationShipNames;
+//   type: VerificationReationShipTypes;
+//   constructor(name :VerificationRelationShipNames, type :VerificationReationShipTypes){
+//     this.name = name;
+//     this.type = type;
+//   }
+// }
+
+
 
 ////// assertionMethod
 // Ref: https://www.w3.org/TR/did-core/#assertionmethod

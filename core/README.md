@@ -134,9 +134,11 @@ Important links:
 - [Verifiable Credential video](https://www.youtube.com/watch?v=eWtOg3vSzxI)
 - [JSON web signature](https://tools.ietf.org/html/rfc7515)
 - [JSON Web Key (JWK)](https://tools.ietf.org/html/rfc7517)
+- [JSON serialiser rule](https://infra.spec.whatwg.org/#json)
 
 https://identity.foundation/peer-did-method-spec/
-
+https://stackoverflow.com/questions/58889992/key-differences-between-hyperledger-aries-and-hyperledger-indy 
+https://stackoverflow.com/questions/56949519/why-do-we-need-distributed-ledgers-can-we-just-always-send-our-public-key-along 
 Note:
 
 > What is the problem that did solves?

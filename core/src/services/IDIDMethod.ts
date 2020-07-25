@@ -6,7 +6,8 @@
 // Authors of new DID method specifications are encouraged to add their method names to the DID Method Registry so that other implementors and members of the community have a place to see an overview of existing DID methods.
 // Each DID method is required to have its own technical specification, which must define the following aspects of the DID method:
 
-//Ref: https://www.w3.org/TR/did-core/#methods
+//Ref: https://www.w3.org/TR/did-core/#methods\
+//https://identity.foundation/peer-did-method-spec/index.html
 export default interface IDIDMethod {
     methodName: string; // 5 or less chars
     methodSpecificIdSyntax: string;

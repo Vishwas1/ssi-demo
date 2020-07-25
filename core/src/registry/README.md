@@ -9,4 +9,4 @@ Note: This component should ideally be taken out and implemented as seperated mo
 ### Registires
 
 - [DID Method registries](https://w3c.github.io/did-spec-registries/)
-- 
+- https://github.com/uport-project/ethr-did-registry 
