@@ -42,30 +42,46 @@ Ed25519VerificationKey2018-------------------------------
 
  */
 
-
-
 // 1. Publickey VM: A public key is a verification method. Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication or establishing secure communication with service endpoints
 //                 Public keys can be included in a DID document using the publicKey or authentication properties, depending on what they are to be used for. https://w3c.github.io/did-core/#public-keys
 // 2. 
 
+import { JwsVerificationKey2020, Ed25519VerificationKey2018, Secp256k1VerificationKey2018, IJWKPublicKey } from './VerificationMethodTypes';
 
-import { Ed25519VerificationKey2018 } from './VerificationMethodTypes';
-
-// One type of verification method
-export default class PublicKeyVerificationMethod{
+export interface IVerificationMethodType{
   id: string; //URI
-  type: string;  // VerificationMethodTypes
+  type: string //JwsVerificationKey2020 | Ed25519VerificationKey2018 | Secp256k1VerificationKey2018;  // VerificationMethodTypes
   controller: string;
-  publicKey: string | {} 
+}
 
-  constructor() {
-    const vmt = new Ed25519VerificationKey2018("")
+export class JwsVerificatioMethod extends JwsVerificationKey2020 implements IVerificationMethodType{
+  id: string; //URI
+  controller: string;
+  constructor(){
+    super({});
     this.id = "";
-    this.type = vmt.name;
-    this.controller = ""
-    this.publicKey = vmt.publicKeyBase58
+    this.controller = "";
   }
+}
 
+export class Ed25519VerificationMethod extends Ed25519VerificationKey2018 implements IVerificationMethodType{
+  id: string; //URI
+  controller: string;
+  constructor(){
+    super("");
+    this.id = "";
+    this.controller = "";    
+  }
 
 }
 
+export class Secp256k1VerificationMethod extends Secp256k1VerificationKey2018 implements IVerificationMethodType{
+  id: string; //URI
+  controller: string;
+  constructor(){
+    super("");
+    this.id = "";
+    this.controller = "";
+  }
+
+}
