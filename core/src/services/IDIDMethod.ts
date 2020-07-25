@@ -7,13 +7,13 @@
 // Each DID method is required to have its own technical specification, which must define the following aspects of the DID method:
 
 //Ref: https://www.w3.org/TR/did-core/#methods
-export default interface IDIDMethod{
+export default interface IDIDMethod {
     methodName: string; // 5 or less chars
     methodSpecificIdSyntax: string;
-    op_create(); 
-    op_read(DID: string);  
+    op_create();
+    op_read(DID: string);
     op_verify(DID: string);
-    op_update(DID: string); 
+    op_update(DID: string);
     op_deactivate(DID: string);
     //TODO security requirements: https://www.w3.org/TR/did-core/#security-considerations
     //TODO privacy requirements
