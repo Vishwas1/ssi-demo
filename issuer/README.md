@@ -12,3 +12,4 @@ Ref:
 
 - https://www.w3.org/TR/vc-data-model/#status-0
 - https://livebook.manning.com/book/self-sovereign-identity/chapter-7/v-5/1
+- https://github.com/hyperledger/aries-rfcs/tree/master/features/0036-issue-credential

@@ -119,13 +119,23 @@ A DID URL dereferencer is a software and/or hardware component that takes a DID 
 - https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-5/43
 - https://github.com/WebOfTrustInfo/rwot6-santabarbara/blob/master/final-documents/did-auth.md#did-record-creation 
 - https://w3c-ccg.github.io/security-vocab/
+- [Git-did](https://github.com/decentralized-identity/github-did)
 
 Important links:
 
 - https://w3c.github.io/did-spec-registries/#properties
 - https://www.w3.org/TR/did-core/#introduction
+- [Quick read](https://w3c-ccg.github.io/did-primer/)
+- [Did exchange](https://github.com/hyperledger/aries-rfcs/tree/master/features/0023-did-exchange)
+- [JSON LD Vid](https://www.youtube.com/watch?v=vioCbTo3C-4)
+- [JSON LD W3C spec](https://w3c.github.io/json-ld-syntax/)
+- [Linked Data signature W3C spec](https://w3c-ccg.github.io/ld-proofs/)
+- [Linked Data Signature vid](https://www.youtube.com/watch?v=QdUZaYeQblY&t=633s)
+- [Verifiable Credential video](https://www.youtube.com/watch?v=eWtOg3vSzxI)
+- [JSON web signature](https://tools.ietf.org/html/rfc7515)
+- [JSON Web Key (JWK)](https://tools.ietf.org/html/rfc7517)
 
-
+https://identity.foundation/peer-did-method-spec/
 
 Note:
 
