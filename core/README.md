@@ -127,8 +127,12 @@ Important links:
 - https://www.w3.org/TR/did-core/#introduction
 - [Quick read](https://w3c-ccg.github.io/did-primer/)
 - [Did exchange](https://github.com/hyperledger/aries-rfcs/tree/master/features/0023-did-exchange)
-- [JSON LD Vid](https://www.youtube.com/watch?v=vioCbTo3C-4)
-- [JSON LD W3C spec](https://w3c.github.io/json-ld-syntax/)
+- JSON LD
+  - [JSON LD Vid](https://www.youtube.com/watch?v=vioCbTo3C-4)
+  - [JSON LD W3C spec](https://w3c.github.io/json-ld-syntax/)
+  - [JSON LD playground](https://json-ld.org/playground/)
+  - [Exmaple](https://tinyurl.com/y9jfkqjr)
+  - [Learn JSON-ld](https://json-ld.org/learn.html)
 - [Linked Data signature W3C spec](https://w3c-ccg.github.io/ld-proofs/)
 - [Linked Data Signature vid](https://www.youtube.com/watch?v=QdUZaYeQblY&t=633s)
 - [Verifiable Credential video](https://www.youtube.com/watch?v=eWtOg3vSzxI)
