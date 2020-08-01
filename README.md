@@ -38,3 +38,4 @@ Sample implementation of proposed  [DID](https://www.w3.org/TR/did-core/) by the
 - https://livebook.manning.com/book/self-sovereign-identity/chapter-7/v-5/31
 - https://www.w3.org/TR/vc-data-model/#lifecycle-details
 - [Cryptographic Accumulator](https://medium.com/@aurelcode/cryptographic-accumulators-da3aa4561d77)
+- [](https://github.com/jandrieu/rebooting-the-web-of-trust-fall2016/blob/master/topics-and-advance-readings/a-technology-free-definition-of-self-sovereign-identity.pdf)
