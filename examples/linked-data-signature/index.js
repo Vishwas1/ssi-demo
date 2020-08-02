@@ -2,10 +2,11 @@ const jsonSigs =  require('jsonld-signatures')
 const { Ed25519KeyPair } = require('crypto-ld');
 const { AuthenticationProofPurpose } = jsonSigs.purposes;
 const { Ed25519Signature2018 } = jsonSigs.suites;
-const { personDoc } = require('./sampleDoc')
+const { personDoc, helloWorldDoc } = require('./sampleDoc')
 const { documentLoader } = require('jsonld');
 
 const DID_SCHEME = 'did:hsauth:id#';
+const compactProof = false;
 
 // Generate new key pairs
 const generateKeys = async () => {
@@ -27,14 +28,15 @@ const generateKeys = async () => {
 const do_Sign = async (doc,  privateKeyBase58, publicKey) => {
   const signed = await jsonSigs.sign(doc, {
     suite: new Ed25519Signature2018({
-      verificationMethod: keypair.id,
+      verificationMethod: publicKey.id,
       key: new Ed25519KeyPair({ privateKeyBase58, ...publicKey })
     }),
     purpose: new AuthenticationProofPurpose({
       challenge: 'ABC',
       domain: 'example.com'
     }),
-    documentLoader
+    documentLoader,
+    compactProof
   });
   return signed;
 }
@@ -50,12 +52,13 @@ const do_verify = async (signedDoc, publicKey, controller) => {
       challenge: 'ABC',
       domain: 'example.com'
     }),
-    documentLoader
+    documentLoader,
+    compactProof
   })
   return verified;
 }
 
-async function testRun(){
+async function testRun(doc){
   try{
     
     console.log('====================Generate Keys=======================')
@@ -76,7 +79,7 @@ async function testRun(){
     console.log('====================Controller==========================')
 
     console.log('====================Signing=============================')
-    const signedDoc = await do_Sign(personDoc, privateKeyBase58, publicKey)
+    const signedDoc = await do_Sign(doc, privateKeyBase58, publicKey)
     console.log(JSON.stringify(signedDoc))
     console.log('====================Signing=============================')
   
@@ -89,7 +92,7 @@ async function testRun(){
   }
 }
 
-testRun()
+testRun(personDoc)
 
 
 
