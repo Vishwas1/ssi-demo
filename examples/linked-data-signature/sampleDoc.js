@@ -38,7 +38,6 @@ const personDoc = {
 
 
 module.exports = {
-    personDoc,
-    helloWorldDoc
+    personDoc
 }
   

@@ -2,7 +2,7 @@ const jsonSigs =  require('jsonld-signatures')
 const { Ed25519KeyPair } = require('crypto-ld');
 const { AuthenticationProofPurpose } = jsonSigs.purposes;
 const { Ed25519Signature2018 } = jsonSigs.suites;
-const { personDoc, helloWorldDoc } = require('./sampleDoc')
+const { personDoc } = require('./sampleDoc')
 const { documentLoader } = require('jsonld');
 
 const DID_SCHEME = 'did:hsauth:id#';
@@ -73,7 +73,7 @@ async function testRun(doc){
       '@context': jsonSigs.SECURITY_CONTEXT_URL,
       id: 'did:hsauth:vishwas',
       publicKey: [ publicKey ],
-      authentication: [ publicKey.id ] // this authorizes this key to be used for authenticating
+      authentication: [ publicKey.id ], // this authorizes this key to be used for authenticating,
     };
     console.log(controller)
     console.log('====================Controller==========================')
