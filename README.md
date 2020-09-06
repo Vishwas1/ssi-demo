@@ -1,41 +1,28 @@
-## SSI-Demo
+## Server
 
-Sample implementation of proposed  [DID](https://www.w3.org/TR/did-core/) by the [W3C Credential Community Group](https://w3c-ccg.github.io/)
+```bash
+cd server
+npm i
+mv .env.sample .env // rename remove .sample from  .env.sample
+npm run newdb // to setup database. Do not run this everytime.
+npm run dev // finally run the server
+```
 
-## Components
+The server runs on port `5000`. Please look into `.env` file to change paramaters. 
 
-1. **Core**: Middleware to create did (i.e onboarding) and manages registry
-2. **Issuers**: One who issue verifiable credentials.
-3. **Verifier**: One who verifies verifiable credentials.
+Other commands:
 
-## Highlevel Architecture
+```bash
+npm run build
+npm run test
+npm run start 
+```
 
-![img](docs/architecture.png)
+## APIs
 
-- SSI Middleware: Manages the required list of APIs.
-- SSI Registry: Stores the DID, DID-Doc, Schemea etc.
+- `api/auth/register`: To register a user
+- `api/auth/login`: Tp authenticate a user
+- `api/auth/verify`: Verifies the authToken passed in header for client
+- `api/auth/challenge`: To get a new challenge
+- `api/blog/created`: Protected with JSON web token
 
-## Onboarding Flow
-
-[Onboarding](ssi-infa/README.md)
-
-## Issuance Flow
-
-[Issuance](issuer/README.md)
-
-## Verification Flow
-
-[Verification](issuer/README.md)
-
-## Reference
-
-- https://www.w3.org/TR/vc-data-model/ 
-- https://www.w3.org/TR/vc-imp-guide/ 
-- [DID Implementation Guide v1.0](https://github.com/w3c/did-imp-guide)
-- [Decentralized Identifier Specification v1.0](https://github.com/w3c/did-core)
-- [Decentralized Identifier Core Registries v1.0](https://github.com/w3c/did-spec-registries)
-- [Decentralized Identifier Use Cases v1.0](https://github.com/w3c/did-use-cases)
-- https://livebook.manning.com/book/self-sovereign-identity/chapter-7/v-5/31
-- https://www.w3.org/TR/vc-data-model/#lifecycle-details
-- [Cryptographic Accumulator](https://medium.com/@aurelcode/cryptographic-accumulators-da3aa4561d77)
-- [](https://github.com/jandrieu/rebooting-the-web-of-trust-fall2016/blob/master/topics-and-advance-readings/a-technology-free-definition-of-self-sovereign-identity.pdf)
