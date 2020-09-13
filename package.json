@@ -25,9 +25,7 @@
     "lds-sdk": "^3.4.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.12",
     "@types/express": "^4.17.6",
-    "@types/mocha": "^8.0.0",
     "@types/node": "^14.0.23",
     "chai": "^4.2.0",
     "mocha": "^8.0.1",
