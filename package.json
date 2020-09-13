@@ -1,28 +1,33 @@
 {
-  "name": "auth-server",
+  "name": "core",
   "version": "1.0.0",
-  "description": "Demonstration of Json Web Token",
-  "main": "dist/app",
-  "typings": "dist/app",
+  "description": "Server for did registry",
+  "main": "dist/index",
+  "typings": "dist/index",
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts",
-    "newdb": "nodemon src/app.ts newdb",
+    "setup": "npm run build && npm run setEnv && npm run start -- --newdb",
+    "setEnv": "cp .env.sample dist/.env",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
     "build": "tsc -p .",
     "test": "mocha -r ts-node/register src/tests/**/*.test.ts"
   },
   "author": "Vishwas Anand Bhushan",
   "license": "MIT",
   "dependencies": {
+    "aes-js": "^3.1.2",
+    "sha.js": "^2.4.11",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "lds-sdk": "^3.4.0",
     "simple-node-logger": "^18.12.24",
     "sqlite3": "^5.0.0",
-    "uuid": "^8.2.0",
-    "lds-sdk": "^3.4.0"
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.6",
