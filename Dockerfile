@@ -15,8 +15,9 @@ ENV NODE_ENV=development \
     JWT_SECRET='my\$ecreEtKeY@123' 
 
 WORKDIR /usr/src/app
-COPY package*.json .
-RUN npm ci --only=production
+COPY package.json .
+COPY package-lock.json .
+RUN npm install
 ADD . /usr/src/app
 
 RUN npm run build
