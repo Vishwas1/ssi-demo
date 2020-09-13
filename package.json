@@ -5,24 +5,25 @@
   "main": "dist/app",
   "typings": "dist/app",
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts",
-    "newdb": "nodemon src/app.ts newdb",
-    "build": "tsc -p .",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc -p . &&  cp .env dist/",
     "test": "mocha -r ts-node/register src/tests/**/*.test.ts"
   },
   "author": "Vishwas Anand Bhushan",
   "license": "MIT",
   "dependencies": {
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "lds-sdk": "^3.4.0",
     "simple-node-logger": "^18.12.24",
     "sqlite3": "^5.0.0",
-    "uuid": "^8.2.0",
-    "lds-sdk": "^3.4.0"
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.6",
