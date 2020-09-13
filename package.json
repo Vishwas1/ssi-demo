@@ -1,9 +1,9 @@
 {
-  "name": "auth-server",
+  "name": "core",
   "version": "1.0.0",
-  "description": "Demonstration of Json Web Token",
-  "main": "dist/app",
-  "typings": "dist/app",
+  "description": "Server for did registry",
+  "main": "dist/index",
+  "typings": "dist/index",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
