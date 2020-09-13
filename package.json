@@ -5,6 +5,8 @@
   "main": "dist/index",
   "typings": "dist/index",
   "scripts": {
+    "setup": "npm run build && npm run setEnv && npm run start -- --newdb",
+    "setEnv": "cp .env.sample dist/.env",
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
     "build": "tsc -p .",
