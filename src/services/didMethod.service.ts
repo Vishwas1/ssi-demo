@@ -1,7 +1,7 @@
 import IDID from '../models/IDID';
 import { getChallange, getUserDoc, sign, verify, getCredential, getDidDocAndKeys} from 'lds-sdk';
 import { DBService, SchemaType } from './db.service';
-
+import { host, port } from '../config'
 
 export default class DIDMethod implements IDID{
     did: string;
@@ -27,7 +27,7 @@ export default class DIDMethod implements IDID{
 
     create = async () => {
         const { keys, didDoc, did } = await getDidDocAndKeys({ name:  this.name})
-        didDoc['@context'].push("http://localhost:5000/api/did/resolve")
+        didDoc['@context'].push(`http://${host}:${port}/api/did/resolve`)
          
         this.did = did;
         this.id = this.did//this.getId();

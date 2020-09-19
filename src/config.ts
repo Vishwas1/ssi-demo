@@ -22,6 +22,7 @@ const logger = log.createSimpleLogger({
 logger.setLevel(process.env.LOG_LEVEL || 'info')
 
 const port = process.env.PORT || 5000
+const host = process.env.HOST || "localhost"
 
 
 // DATABASE
@@ -45,12 +46,19 @@ const did = {
 const jwtSecret = process.env.JWT_SECRET || 'secretKey'
 const jwtExpiryInMilli = 240000
 const recaptchaSecret = process.env.RECAPTCHA_SECRET 
+
+const explorer = {
+    port : process.env.EXPLORER_PORT || 5001,
+    host : process.env.EXPLORER_HOST || "localhost"
+}
 export  {
     port,
+    host,
     logger,
     db,
     did,
     jwtSecret,
     jwtExpiryInMilli,
-    recaptchaSecret
+    recaptchaSecret,
+    explorer
 }

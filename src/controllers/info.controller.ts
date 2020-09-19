@@ -1,11 +1,11 @@
 import { DBService, SchemaType } from '../services/db.service';
-
+import {port, host, explorer} from '../config'
 const info = async (req, res) => {
     try{
         const info = {
             status: "LIVE",
-            nodeUrl: "http://localhost:5000",
-            explorerUrl: "http://localhost:5001",
+            nodeUrl: `http://${host}:${port}`,
+            explorerUrl: `http://${explorer.host}:${explorer.port}`,
             schemaCount: 0,
             didCount: 0,
             transactions: 0
