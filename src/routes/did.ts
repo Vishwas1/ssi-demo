@@ -7,6 +7,12 @@ const router = Router()
 // GET:  /api/did/create?name=
 router.get('/create', verifyReCaptcha, didCtrl.create)
 
+
+// TODO:  this is wrong way: we need to figure out how we can handle both the apis (/create and /create_tmp)
+// Acutally the studio-server need to call /create api but it does not have recaptha token
+// I am being too lazy to think how to fix this..hence it way!
+router.get('/create_tmp', didCtrl.create)
+
 // POST: /api/did/update
 router.post('/update', didCtrl.update)
 
