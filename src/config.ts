@@ -44,11 +44,13 @@ const did = {
 
 const jwtSecret = process.env.JWT_SECRET || 'secretKey'
 const jwtExpiryInMilli = 240000
+const recaptchaSecret = process.env.RECAPTCHA_SECRET 
 export  {
     port,
     logger,
     db,
     did,
     jwtSecret,
-    jwtExpiryInMilli
+    jwtExpiryInMilli,
+    recaptchaSecret
 }

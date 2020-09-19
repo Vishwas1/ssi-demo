@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import didCtrl from '../controllers/did';
+import { verifyReCaptcha } from '../middleware/auth'
 
 const router = Router()
 
 // GET:  /api/did/create?name=
-router.get('/create', didCtrl.create)
+router.get('/create', verifyReCaptcha, didCtrl.create)
 
 // POST: /api/did/update
 router.post('/update', didCtrl.update)
