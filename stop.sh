@@ -3,7 +3,7 @@ PORT_SSI_REGISTRY=5000
 PORT_ISSUER_CLIENT=9001
 PORT_ISSUER_SERVER=9000
 
-LOG="logs"
+WORKING_DIR="/home/vishwas/hypersign"
 
 echo 'Cleanup:=============================================='
 #pm2 del all 
@@ -19,6 +19,6 @@ kill -9 $PID_ISSUER_CLIENT
 PID_ISSUER_SERVER=$(lsof -i:$PORT_ISSUER_SERVER | awk '$1 == "node" { print $2}')
 kill -9 $PID_ISSUER_SERVER
 
-rm -rf $LOG
+rm -rf $WORKING_DIR
 echo 'Cleanup:==============================================Done!'
 exit

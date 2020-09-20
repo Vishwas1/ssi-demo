@@ -3,20 +3,27 @@ echo 'Stopping:=============================================='
 echo 'Stopping:=============================================='
 
 
-LOG='/tmp/logs'
-mkdir $LOG
+WORKING_DIR="/home/$USER/hypersign"
+LOG_DIR=$WORKING_DIR/log
+
+mkdir -p $LOG_DIR
+
 
 echo 'Restarting:=============================================='
-nohup npm run dev > $LOG/registry.log &
+npm run setup
+nohup npm run start > $LOG_DIR/core.log &
 
 cd ../explorer 
-nohup npm run serve  > $LOG/explorer.log &
+nohup npm run serve  > $LOG_DIR/explorer.log &
 cd -
+
 cd ../studio/server
-nohup npm run dev > $LOG/studio_server.log &
+npm run setup
+nohup npm run start > $LOG_DIR/studio_server.log &
 cd -
+
 cd ../studio/client
-nohup npm run serve > $LOG/studio_client.log &
+nohup npm run serve > $LOG_DIR/studio_client.log &
 echo 'Restarting:==============================================Done!'
 
 exit
