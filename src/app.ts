@@ -9,6 +9,7 @@ import appRoutes from './routes/app';
 import didRoutes from './routes/did';
 import infoRoutes from './routes/info';
 import schemaRoutes from './routes/schema';
+import path from 'path';
 
 export default function app() {
     const app: Application = express();
@@ -18,7 +19,7 @@ export default function app() {
     app.use(bodyParser.json());
     app.use(express.static('public'));
 
-    app.get('/', infoRoutes)
+    app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')))
     app.use('/api/app', appRoutes)
     app.use('/api/auth', authRoutes)
     app.use('/api/blog', blogRoutes)
