@@ -3,7 +3,7 @@ import { User } from '../services/user.service';
 import IUser  from '../models/IUser'
 import { logger, jwtSecret, jwtExpiryInMilli } from '../config'
 import jwt from 'jsonwebtoken';
-import { getChallange, verify } from 'lds-sdk'
+import { hypersignSDK } from '../config';
 const { sha256hashStr } = require('../utils/hash')
 
 const check = (req: Request, res: Response) => {
@@ -65,7 +65,7 @@ const login = async (req: Request, res: Response) => {
             if(!proof || !controller || !publicKey  || !domain) throw new Error('proof, controller, publicKey, challenge, domain is empty')
             proof = JSON.parse(proof)
             logger.debug(`Before verifying the proof, ch = ${challengeExtractedFromChToken}`)
-            const res = await verify({doc: proof, publicKey: publicKey, challenge: challengeExtractedFromChToken, domain, controller: controller })
+            const res = await hypersignSDK.did.verify({doc: proof, publicKey: publicKey, challenge: challengeExtractedFromChToken, domain, controller: controller })
             logger.debug(`After verifying the proof, res = ${JSON.stringify(res)}`)
             if(res.verified == true){
                 logger.debug('Proof verified')
@@ -107,7 +107,7 @@ const recover = (req: Request, res: Response) => {
 }
 
 const getNewChallenge = (req: Request, res: Response) => {
-    const challenge = getChallange();
+    const challenge = hypersignSDK.did.getChallange();
     jwt.sign(
         {challenge}, 
         jwtSecret, 

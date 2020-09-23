@@ -1,7 +1,6 @@
 import IDID from '../models/IDID';
-import { getChallange, getUserDoc, sign, verify, getCredential, getDidDocAndKeys} from 'lds-sdk';
 import { DBService, SchemaType } from './db.service';
-import { host, port } from '../config'
+import { host, port,hypersignSDK } from '../config'
 
 export default class DIDMethod implements IDID{
     did: string;
@@ -21,12 +20,12 @@ export default class DIDMethod implements IDID{
     }
 
     private getId(){
-        const uuid = this.prefix + getChallange()
+        const uuid = this.prefix + hypersignSDK.did.getChallange()
         return uuid.substring(0, 20)
     }
 
     create = async () => {
-        const { keys, didDoc, did } = await getDidDocAndKeys({ name:  this.name})
+        const { keys, didDoc, did } = await hypersignSDK.did.getDidDocAndKeys({ name:  this.name})
         didDoc['@context'].push(`http://${host}:${port}/api/did/resolve`)
          
         this.did = did;

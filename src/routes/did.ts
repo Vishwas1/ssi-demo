@@ -5,7 +5,7 @@ import { verifyReCaptcha } from '../middleware/auth'
 const router = Router()
 
 // GET:  /api/did/create?name=
-router.get('/create', verifyReCaptcha, didCtrl.create)
+router.get('/create', didCtrl.create)
 
 
 // TODO:  this is wrong way: we need to figure out how we can handle both the apis (/create and /create_tmp)

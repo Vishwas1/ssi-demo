@@ -1,6 +1,7 @@
 import IUser  from '../models/IUser';
 import { DBService, SchemaType } from './db.service';
-import { getChallange } from 'lds-sdk'
+import { hypersignSDK } from '../config'
+
 export class User implements IUser{
     id: string;
     fname: string;
@@ -38,7 +39,7 @@ export class User implements IUser{
     }
 
     private getId(){
-        const uuid = this.prefix + getChallange()
+        const uuid = this.prefix + hypersignSDK.did.getChallange()
         return uuid.substring(0, 20)
     }
     async create(){

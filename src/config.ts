@@ -2,6 +2,7 @@ import env from 'dotenv'
 import sqlite from 'sqlite3';
 import path from 'path';
 import fs from 'fs'
+import hsdk from 'lds-sdk'
 const log = require('simple-node-logger');
 
 
@@ -51,6 +52,13 @@ const explorer = {
     port : process.env.EXPLORER_PORT || 5001,
     host : process.env.EXPLORER_HOST || "localhost"
 }
+
+const hostname = `http://${host}:${port}`
+const options = { nodeUrl: hostname,  didScheme:  "did:hs"}
+const hypersignSDK = {
+    did: hsdk.did(options)
+}
+
 export  {
     port,
     host,
@@ -60,5 +68,6 @@ export  {
     jwtSecret,
     jwtExpiryInMilli,
     recaptchaSecret,
-    explorer
+    explorer,
+    hypersignSDK
 }

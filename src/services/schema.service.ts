@@ -1,5 +1,5 @@
 import { ISchema, ISchemaTemplate, IAttribute, ISchemaTemplate_Schema} from '../models/ISchema';
-import { getChallange, getUserDoc, sign, verify, getCredential} from 'lds-sdk';
+import {hypersignSDK} from '../config'
 import { DBService, SchemaType } from './db.service';
 import DIDMethod from './didMethod.service'
 
@@ -84,7 +84,7 @@ export default class Schema implements ISchema{
     
 
     private getId(){
-        const uuid = this.prefix + getChallange()
+        const uuid = this.prefix + hypersignSDK.did.getChallange()
         return uuid.substring(0, 20)
     }
 

@@ -3,7 +3,7 @@ import { Application } from '../services/application.service';
 import IApplication from '../models/IApplication';
 import jwt from 'jsonwebtoken';
 import { logger, jwtSecret, jwtExpiryInMilli } from '../config';
-import { getChallange } from 'lds-sdk'
+import { hypersignSDK } from '../config';
 
 const registerApp = async (req: Request, res: Response) => {
     try{
@@ -59,7 +59,7 @@ const login = (req: Request, res: Response) => {
         logger.debug('AuthServer: login: req.body = ' + JSON.stringify({ domainName, redirect_uri }))
         if(!domainName || !redirect_uri) throw new Error('domainName and redirect_uri is required')
 
-        const challenge = getChallange();
+        const challenge = hypersignSDK.did.getChallange();
         const param = { appId:appData.appId, domainName, redirect_uri, challenge }
 
         logger.debug('Param = '+ JSON.stringify(param))
