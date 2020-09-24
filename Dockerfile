@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:12.6.0-buster
 
 # setting up the working dir
 WORKDIR /usr/src/app
