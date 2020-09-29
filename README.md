@@ -21,7 +21,7 @@ docker pull hypersignprotocol/core:<tag>
 #### Building the image
 
 ```bash
-docker build -t hypersignprotocol/core .
+docker build -t hypersignprotocol/core:test .
 ```
 
 #### Running the container
