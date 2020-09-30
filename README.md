@@ -21,7 +21,7 @@ docker pull hypersignprotocol/core:<tag>
 #### Building the image
 
 ```bash
-docker build -t hypersignprotocol/core:test .
+docker build -t hypersignprotocol/core:v1.0 .
 ```
 
 #### Running the container
@@ -35,7 +35,7 @@ docker run \
     --env LOG_LEVEL="debug" \
     --env DATABASE_FILEPATH="../db/core.db" \
     --env JWT_SECRET="my\$ecreEtKeY@123" \
-    -p 5000:5000 hypersignprotocol/core
+    -p 5000:5000 hypersignprotocol/core:v1.0
 ```
 
 
