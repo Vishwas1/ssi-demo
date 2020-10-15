@@ -1,6 +1,6 @@
 
 import DIDMethod from '../services/didMethod.service'
-import { did } from '../config';
+import { did, hypersignSDK, logger } from '../config';
 const create = async (req, res) => {
     try{
         const  { name } = req.query
@@ -12,6 +12,28 @@ const create = async (req, res) => {
         res.status(500).send({ status: 500, message: null, error: e.message})
     }
 }
+
+
+const register = async (req, res) => {
+    try{
+        const  { publicKey, user } = req.query
+        const didMethod = new DIDMethod();
+        const pk = publicKey ? publicKey: "";
+        let usr;
+        try{
+            usr = user && user != "" ? JSON.parse(user): {};
+        }catch(e){
+            usr = {}
+            logger.error("unable to pares user object");
+        }
+        const newDid = await didMethod.register(usr, pk);
+        res.status(200).send({ status: 200, message: newDid, error: null})
+    }catch(e){
+        res.status(500).send({ status: 500, message: null, error: e.message})
+    }
+}
+
+
 
 const update = (req, res) => {
 
@@ -57,6 +79,7 @@ const list = async (req, res) => {
 
 export default {
     create,
+    register,
     update, 
     resolve,
     list,

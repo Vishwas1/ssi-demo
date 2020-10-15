@@ -13,6 +13,13 @@ router.get('/create', verifyReCaptcha, didCtrl.create)
 // I am being too lazy to think how to fix this..hence it way!
 router.get('/create_tmp', didCtrl.create)
 
+// Examples:
+// http://localhost:5000/api/did/register
+// http://localhost:5000/api/did/register?publicKey=5tW1ZDEwEKZC1aszbqL19sut8e4MJDYXBgkRqLy8mBcS
+// http://localhost:5000/api/did/register?publicKey=5tW1ZDEwEKZC1aszbqL19sut8e4MJDYXBgkRqLy8mBcS&user={"name":"vishwas","email":"test-mail.com","phnumber":"+91-1234567788"}
+// http://localhost:5000/api/did/register?&user={"name":"vishwas","email":"test-mail.com","phnumber":"+91-1234567788"}
+router.get('/register', didCtrl.register)
+
 // POST: /api/did/update
 router.post('/update', didCtrl.update)
 

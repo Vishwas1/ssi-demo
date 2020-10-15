@@ -41,6 +41,26 @@ export default class DIDMethod implements IDID{
         }
     }
 
+    register = async (user = {}, publicKey = "") => {
+        const { keys, didDoc, did } = await hypersignSDK.did.getDid({
+            user,
+            publicKey
+        })
+        didDoc['@context'].push(`http://${host}:${port}/api/did/resolve`)
+         
+        this.did = did;
+        this.id = this.did//this.getId();
+        this.didDoc = JSON.stringify(didDoc);
+
+        // TODO: store credentials in db
+        await this.dbSerice.add(SchemaType.Did, this);
+        return {
+            keys,
+            did: this.did,
+            didDoc: didDoc
+        }
+    }
+
     resolve = async (did: string) => {
         // TODO: fetch didDoc from db 
         let didInDb:IDID  = await this.dbSerice.getOne(SchemaType.Did, { did});
