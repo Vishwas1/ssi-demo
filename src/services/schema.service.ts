@@ -39,7 +39,7 @@ class SchemaTemplate implements ISchemaTemplate{
         this.authored = new Date().toString();
 
         this.schema = { } as ISchemaTemplate_Schema;
-        this.schema.$schema = "http://json-schema.org/draft-07/schema#";
+        this.schema.$schema = "https://json-schema.org/draft-07/schema#";
         this.schema.type = "object"
         this.schema.description = description
         this.schema.properties = {}
