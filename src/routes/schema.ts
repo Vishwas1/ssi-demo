@@ -1,22 +1,21 @@
-import { Router } from 'express';
-import didCtrl from '../controllers/schema';
+import { Router } from "express";
+import SchemaController from "../controllers/schema";
 
-const router = Router()
+const router = Router();
 
-// GET:  /api/did/create?name=
-router.post('/create', didCtrl.create)
+router.post("/", SchemaController.registerSchema);
 
-// POST: /api/did/update
-// Only owner should be able to update
-router.post('/update', didCtrl.update)
+router.put("/", (req, res) => {
+  res.json({ message: "Method not allowed" });
+})
 
-// GET:  /api/did/resolve?did=
-router.get('/get', didCtrl.get)
+router.get("/", SchemaController.getSchemaList);
 
-router.get('/get/:schemaId', didCtrl.getRaw)
+router.get("/:schemaId", SchemaController.getSchemaById);
 
-router.get('/list', didCtrl.list)
+// Delete
+router.delete("/", (req, res) => {
+  res.json({ message: "Method not allowed" });
+});
 
-export default router
-
-
+export default router;

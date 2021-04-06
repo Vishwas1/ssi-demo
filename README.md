@@ -1,41 +1,51 @@
-## Server
+## APIs
 
+`/did http://127.0.0.1:5000/api/v1/did/`
+
+Supported Methods: `GET`, `POST`
+
+
+`/schema http://127.0.0.1:5000/api/v1/schema/`
+
+Supported Methods: `GET`, `POST`
+
+
+## Install and usage
+
+Install dependencies
 ```bash
-cd server
-npm i
-npm run setup // to setup env and database
-npm run start  // to run the server
-npm run dev // to run the server in dev env
+npm i 
 ```
 
-The server runs on port `5000`. Please look into `.env` file to change paramaters. 
-
-### Docker
-
-#### Pull the image
+Development
 
 ```bash
-docker pull hypersignprotocol/core:<tag>
+npm run dev 
 ```
 
-#### Building the image
+```
+npm run build:dev
+npm run start  
+```
+
+Production
 
 ```bash
-docker build -t hypersignprotocol/core:v1.0 .
+npm run build:prod 
+npm run prod #production
+```
+Note: Create `production.env` for production run
+
+### Dockerization
+
+Build docker image
+```
+npm run build:prod
+docker build -t ts-boilerplate .  # build an image
 ```
 
-#### Running the container
-
-```bash
-docker run \
-    --env PORT=5000 \
-    --env LOG_FILEPATH="../log/core.log" \
-    --env LOG_DIR="./log" \
-    --env LOG_TIMESTAMP_FORMAT="YYYY-MM-DD HH:mm:ss.SSS" \
-    --env LOG_LEVEL="debug" \
-    --env DATABASE_FILEPATH="../db/core.db" \
-    --env JWT_SECRET="my\$ecreEtKeY@123" \
-    -p 5000:5000 hypersignprotocol/core:v1.0
+Run container
 ```
-
-
+docker run -p 5000:5000 -d ts-boilerplate
+```
+Note: Create `production.env` for production run

@@ -1,68 +1,62 @@
-// Ref: https://w3c-ccg.github.io/vc-json-schemas/#standards_compliance
-import Schema from '../services/schema.service'
-import { did } from '../config';
-const create = async (req, res) => {
-    try{
-        const  { name, owner, attributes, description } = req.body;
-        
-        if(attributes.length == 0) throw new Error('Atleast one attribute is required.')
-        if(!name) throw new Error('Name is required.')
-        if(!owner) throw new Error('Owner DID is required.')
-        
-        const schemaInst = new Schema(name, owner, description);
-        const newSchema = await schemaInst.create(attributes);
-        res.status(200).send({ status: 200, message: newSchema, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
+import { logger } from "../config";
+import { Request, Response } from "express";
+import SchemaModel, { ISchema } from "../models/schema";
+// import InvestorModel, {IInvestor} from "../models/did";
+
+async function registerSchema(req: Request, res: Response) {
+  try {
+    const schema  = req.body;
+    if(!schema) {
+      return res.status(400).send("Error: Invalid schema");
     }
-}
 
-const update = (req, res) => {
-
-}
-
-const get = async (req, res) => {
-    try{
-        const  { id, owner }  = req.query
-        if(!did) throw new Error('Did is required!')
-        const schemaInst = new Schema("",owner);
-        const schema = await schemaInst.get(id);
-        res.status(200).send({ status: 200, message: schema, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
+    const { id: schemaId } = schema;
+    if(!schemaId) {
+      return res.status(400).send("Error: Invalid schema");
     }
+
+    const newEmp: ISchema = await SchemaModel.create({
+      schemaId, 
+      schemaString: JSON.stringify(schema)
+    });
+    return res.status(200).send(newEmp);
+
+  } catch (e) {
+    logger.error("ProjectCtrl:: addProject(): Error " + e);
+    return res.status(500).send(`Error: ${e.message}`);
+  }
 }
 
+async function getSchemaList(req: Request, res: Response) {
+  try {
+    const employeeList:Array<ISchema> = await SchemaModel.find({});
+    return res.status(200).send(employeeList);
+  } catch (e) {
+    logger.error('InvestorCtrl:: getAllProject(): Error ' + e);
+    return res.status(500).send(`Error: ${e.message}`);
+  }
+}
 
-const list = async (req, res) => {
-    try{
-        const didMethod = new Schema("","");
-        const list = await didMethod.list();
-        res.status(200).send({ status: 200, message: list, error: null})
-    }catch(e){
-        console.log(e)
-        res.status(500).send({ status: 500, message: null, error: e})
+async function getSchemaById(req: Request, res: Response) {
+  try {
+    const { schemaId } = req.params;
+    const investor:ISchema = await SchemaModel.where({schemaId: schemaId}).findOne();
+
+    if(!investor){
+      return res.status(400).send("Error: Invalid schemaId")
     }
-}
 
-const getRaw = async (req, res) => {
-    try{
-        const  { schemaId }  = req.params
-        if(!schemaId) throw new Error("schemaId can not be empty")
-        const didMethod = new Schema("","");
-        const raw = await didMethod.getRaw(schemaId);
-        res.status(200).json(raw) // send({ status: 200, message: raw, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
-    }
+    const { schemaString } = investor;
+    const schema = JSON.parse(schemaString);
+    return res.status(200).send(schema);
+  } catch (e) {
+    logger.error('InvestorCtrl:: getProjectById(): Error ' + e);
+    return res.status(500).send(`Error: ${e.message}`);
+  }
 }
-
 
 export default {
-    create,
-    update, 
-    get,
-    list,
-    getRaw
-}
-
+  registerSchema,
+  getSchemaById,
+  getSchemaList
+};

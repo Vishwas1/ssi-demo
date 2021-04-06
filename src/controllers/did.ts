@@ -1,88 +1,61 @@
+import { logger } from "../config";
+import { Request, Response } from "express";
+import DIDModel, { IDID } from "../models/did";
 
-import DIDMethod from '../services/didMethod.service'
-import { did, hypersignSDK, logger } from '../config';
-const create = async (req, res) => {
-    try{
-        const  { name } = req.query
-        if(!name) throw new Error('Name is required!')
-        const didMethod = new DIDMethod(name);
-        const newDid = await didMethod.create();
-        res.status(200).send({ status: 200, message: newDid, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
+async function registerDID(req: Request, res: Response) {
+  try {
+    const  didDoc  = req.body;
+    if(!didDoc) {
+      return res.status(400).send("Error: Invalid didDoc");
     }
+
+    const { id: did } = didDoc;
+    if(!did) {
+      return res.status(400).send("Error: Invalid didDoc");
+    }
+
+    const newEmp: IDID = await DIDModel.create({
+      did, 
+      didDocString: JSON.stringify(didDoc)
+    });
+    return res.status(200).send(newEmp);
+  } catch (e) {
+    logger.error("InvestorCtrl:: addInvestor(): Error " + e);
+    return res.status(500).send(`Error: ${e.message}`);
+  }
 }
 
-
-const register = async (req, res) => {
-    try{
-        const  { publicKey, user } = req.query
-        const didMethod = new DIDMethod();
-        const pk = publicKey ? publicKey: "";
-        let usr;
-        try{
-            usr = user && user != "" ? JSON.parse(user): {};
-        }catch(e){
-            usr = {}
-            logger.error("unable to pares user object");
-        }
-        const newDid = await didMethod.register(usr, pk);
-        res.status(200).send({ status: 200, message: newDid, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
-    }
+async function getDIDList(req: Request, res: Response) {
+  try {
+    const employeeList:Array<IDID> = await DIDModel.find({});
+    return res.status(200).send(employeeList);
+  } catch (e) {
+    logger.error('InvestorCtrl:: getAllInvestor(): Error ' + e);
+    return res.status(500).send(`Error: ${e.message}`);
+  }
 }
 
-
-
-const update = (req, res) => {
-
-}
-
-const resolve = async (req, res) => {
-    try{
-        const  { did } = req.query
-        if(!did) throw new Error('Did is required!')
-        const didMethod = new DIDMethod();
-        const didDoc = await didMethod.resolve(did);
-        res.status(200).send({ status: 200, message: didDoc, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
+async function resolveDID(req: Request, res: Response) {
+  try {
+    const { did } = req.params;
+    const didData:IDID = await DIDModel.where({did: did}).findOne();
+    
+    if(!didData){
+      return res.status(400).send("Error: Invalid did")
     }
-}
-
-
-const raw = async (req, res) => {
-    try{
-        const  { did } = req.params
-        if(!did) throw new Error('Did is required!')
-        const didMethod = new DIDMethod();
-        console.log(did)
-        const raw = await didMethod.resolve(did);
-        res.status(200).json(raw)
-        // res.status(200).send({ status: 200, message: didDoc, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
-    }
-}
-
-
-const list = async (req, res) => {
-    try{
-        const didMethod = new DIDMethod();
-        const list = await didMethod.list();
-        res.status(200).send({ status: 200, message: list, error: null})
-    }catch(e){
-        res.status(500).send({ status: 500, message: null, error: e.message})
-    }
+    
+    const { didDocString } = didData;
+    const didDoc = JSON.parse(didDocString);
+    return res.status(200).send(didDoc);
+  } catch (e) {
+    logger.error('InvestorCtrl:: getInvestorByDID(): Error ' + e);
+    return res.status(500).send(`Error: ${e.message}`);
+  }
 }
 
 export default {
-    create,
-    register,
-    update, 
-    resolve,
-    list,
-    raw
-}
+  registerDID,
+  resolveDID,
+  getDIDList
+};
 
